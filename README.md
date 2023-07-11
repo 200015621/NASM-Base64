@@ -6,7 +6,7 @@ Software Básico - Ladeira
 ### Compilar
 ```
 nasm -f win64 base64.asm
-gcc -g main.c base64.obj -o main.exe
+gcc main.c base64.obj -o main.exe
 ```
 
 ### Rodar
@@ -21,7 +21,7 @@ gcc -g main.c base64.obj -o main.exe
 ### Compilar
 ```bash
 nasm -f elf64 base64.asm
-gcc -g main.c base64.o -o main
+gcc main.c base64.o -o main
 ```
 
 ### Rodar
