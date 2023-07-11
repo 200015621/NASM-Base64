@@ -1,12 +1,12 @@
 # Codificador Base64 em C NASM
 Software Básico - Ladeira
 
-# Windows
+## Windows
 
 ### Compilar
-```bash
-nasm -f win32 base64.asm
-gcc -g -m32 main.c base64.obj -o main.exe
+```
+nasm -f win64 base64.asm
+gcc -g main.c base64.obj -o main.exe
 ```
 
 ### Rodar
@@ -16,12 +16,12 @@ gcc -g -m32 main.c base64.obj -o main.exe
 ./main.exe --decode <input_file> <output_file>
 ```
 
-# Linux
+## Linux
 
 ### Compilar
 ```bash
-nasm -f elf base64.asm
-gcc -g -m32 main.c base64.o -o main
+nasm -f elf64 base64.asm
+gcc -g main.c base64.o -o main
 ```
 
 ### Rodar
