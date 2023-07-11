@@ -3,8 +3,8 @@ global b64encode
 section .text
 b64encode:
         mov     ecx, edi
-        mov     edi, ebx
-        mov     ebx, b64alphabet
+        mov     rdi, rbx
+        mov     rbx, b64alphabet
 	
         mov     al, cl
         and     al, 63	; Pega os ultimos 6bits
@@ -28,7 +28,7 @@ b64encode:
         and     al, 63
         xlatb
 
-        mov     ebx, edi
+        mov     rbx, rdi
         ret
 
 section .data
