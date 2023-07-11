@@ -2,30 +2,33 @@ global b64encode
 
 section .text
 b64encode:
-        push    ebx
-        mov     eax, [esp+8]
-        mov     ebx, eax
-        mov     ecx, eax
-        mov     edx, eax
-        shr     eax, 18
-        shr     ebx, 12
+        mov     ecx, edi
+        mov     edi, ebx
+        mov     ebx, b64alphabet
+	
+        mov     al, cl
+        and     al, 63	; Pega os ultimos 6bits
+        xlatb		; Traduz da tabela
+        shr     ecx, 6	; Desloca 6 bits para direita 
+        sal     eax, 8	; Desloca 8 bits pro próximo char base64
+
+        mov     al, cl
+        and     al, 63
+        xlatb
         shr     ecx, 6
-        and     eax, 63
-        and     ecx, 63
-        and     ebx, 63
-        and     edx, 63
-        movzx   eax, byte [b64alphabet + eax]
-        movzx   ebx, byte [b64alphabet + ebx]
-        movzx   ecx, byte [b64alphabet + ecx]
-        movzx   edx, byte [b64alphabet + edx]
         sal     eax, 8
-        or      eax, ebx
+
+        mov     al, cl
+        and     al, 63
+        xlatb
+        shr     ecx, 6
         sal     eax, 8
-        or      eax, ecx
-        sal     eax, 8
-        or      eax, edx
-        pop     ebx
-        bswap   eax
+
+        mov     al, cl
+        and     al, 63
+        xlatb
+
+        mov     ebx, edi
         ret
 
 section .data
